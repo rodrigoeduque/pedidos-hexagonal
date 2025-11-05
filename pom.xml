@@ -31,20 +31,4 @@
         <module>adapters/output/kafka-producer</module>
         <module>bootstrap</module>
     </modules>
-
-    <dependencyManagement>
-        <dependencies>
-            <!-- Módulos internos -->
-            <dependency>
-                <groupId>com.example</groupId>
-                <artifactId>domain</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.example</groupId>
-                <artifactId>application</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 </project>

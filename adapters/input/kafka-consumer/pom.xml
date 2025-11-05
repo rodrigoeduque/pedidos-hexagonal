@@ -9,30 +9,27 @@
         <groupId>com.example</groupId>
         <artifactId>pedidos-hexagonal</artifactId>
         <version>1.0.0</version>
-        <relativePath>../../../../pom.xml</relativePath>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
 
     <artifactId>adapter-kafka-consumer</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- Dependências internas -->
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>application</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>domain</artifactId>
+            <version>${project.version}</version>
         </dependency>
-
-        <!-- Spring Kafka -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
-
-        <!-- Jackson para JSON -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
