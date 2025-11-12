@@ -11,6 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 @RestController
 @RequestMapping("/api/pedidos")
 public class PedidoController {
@@ -38,5 +42,15 @@ public class PedidoController {
                 .map(PedidoRestMapper::toResponse)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PedidoResponse>> buscarTodos() {
+
+        List<PedidoResponse> pedidos = buscarPedidoUseCase.buscarTodos().stream()
+                .map(PedidoRestMapper::toResponse)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(pedidos);
     }
 }

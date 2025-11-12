@@ -8,7 +8,10 @@ import com.example.pedido.application.ports.output.SalvarPedidoPort;
 import com.example.pedido.domain.Pedido;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Component
 public class PedidoPersistenceAdapter implements SalvarPedidoPort, BuscarPedidoPort {
@@ -29,5 +32,12 @@ public class PedidoPersistenceAdapter implements SalvarPedidoPort, BuscarPedidoP
     public Optional<Pedido> buscarPorId(String pedidoId) {
         return repository.findById(pedidoId)
                 .map(PedidoEntityMapper::toDomain);
+    }
+
+    @Override
+    public List<Pedido> buscarTodos() {
+        return repository.findAll().stream()
+                .map(PedidoEntityMapper::toDomain)
+                .collect(Collectors.toList());
     }
 }

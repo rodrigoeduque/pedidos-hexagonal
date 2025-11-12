@@ -4,6 +4,7 @@ import com.example.pedido.application.ports.input.BuscarPedidoUseCase;
 import com.example.pedido.application.ports.output.BuscarPedidoPort;
 import com.example.pedido.domain.Pedido;
 
+import java.util.List;
 import java.util.Optional;
 
 public class BuscarPedidoService implements BuscarPedidoUseCase {
@@ -17,5 +18,10 @@ public class BuscarPedidoService implements BuscarPedidoUseCase {
     @Override
     public Optional<Pedido> executar(String pedidoId) {
         return buscarPedidoPort.buscarPorId(pedidoId);
+    }
+
+    @Override
+    public List<Pedido> buscarTodos() {
+        return buscarPedidoPort.buscarTodos();
     }
 }
