@@ -34,7 +34,7 @@ public class CriarPedidoService implements CriarPedidoUseCase {
                 .toList();
 
         // 2. Cria o pedido (regras de negócio aqui!)
-        Pedido pedido = Pedido.criar(command.clienteId(), itens);
+        Pedido pedido = Pedido.criar(command.clienteId(), command.descricao(), itens);
 
         // 3. Salva (usa a porta de saída)
         salvarPedidoPort.salvar(pedido);

@@ -5,6 +5,7 @@ import java.util.List;
 
 public record CriarPedidoRequest(
         String clienteId,
+        String descricao,
         List<ItemRequest> itens
 ) {
     public record ItemRequest(

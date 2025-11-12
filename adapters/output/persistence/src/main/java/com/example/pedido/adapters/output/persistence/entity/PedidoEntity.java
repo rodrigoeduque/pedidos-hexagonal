@@ -16,6 +16,9 @@ public class PedidoEntity {
     @Column(name = "cliente_id", nullable = false)
     private String clienteId;
 
+    @Column(name = "descricao")
+    private String descricao;
+
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "pedido_id")
     private List<ItemPedidoEntity> itens = new ArrayList<>();
@@ -38,6 +41,9 @@ public class PedidoEntity {
 
     public String getClienteId() { return clienteId; }
     public void setClienteId(String clienteId) { this.clienteId = clienteId; }
+
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
 
     public List<ItemPedidoEntity> getItens() { return itens; }
     public void setItens(List<ItemPedidoEntity> itens) { this.itens = itens; }

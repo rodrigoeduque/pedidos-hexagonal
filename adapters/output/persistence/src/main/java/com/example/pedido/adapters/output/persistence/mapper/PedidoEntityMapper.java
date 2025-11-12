@@ -14,6 +14,7 @@ public class PedidoEntityMapper {
         PedidoEntity entity = new PedidoEntity();
         entity.setId(pedido.getId());
         entity.setClienteId(pedido.getClienteId());
+        entity.setDescricao(pedido.getDescricao());
         entity.setValorTotal(pedido.getValorTotal());
         entity.setStatus(pedido.getStatus().name());
         entity.setDataCriacao(pedido.getDataCriacao());
@@ -35,6 +36,7 @@ public class PedidoEntityMapper {
         return Pedido.reconstruir(
                 entity.getId(),
                 entity.getClienteId(),
+                entity.getDescricao(),
                 itens,
                 entity.getValorTotal(),
                 StatusPedido.valueOf(entity.getStatus()),

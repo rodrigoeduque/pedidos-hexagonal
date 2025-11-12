@@ -5,8 +5,6 @@ import com.example.pedido.adapters.input.rest.dto.PedidoResponse;
 import com.example.pedido.application.ports.input.CriarPedidoCommand;
 import com.example.pedido.domain.Pedido;
 
-import java.util.stream.Collectors;
-
 public class PedidoRestMapper {
 
     public static CriarPedidoCommand toCommand(CriarPedidoRequest request) {
@@ -19,7 +17,7 @@ public class PedidoRestMapper {
                 ))
                 .toList();
 
-        return new CriarPedidoCommand(request.clienteId(), itens);
+        return new CriarPedidoCommand(request.clienteId(),request.descricao(), itens);
     }
 
     public static PedidoResponse toResponse(Pedido pedido) {
@@ -36,6 +34,7 @@ public class PedidoRestMapper {
         return new PedidoResponse(
                 pedido.getId(),
                 pedido.getClienteId(),
+                pedido.getDescricao(),
                 itens,
                 pedido.getValorTotal(),
                 pedido.getStatus().name(),

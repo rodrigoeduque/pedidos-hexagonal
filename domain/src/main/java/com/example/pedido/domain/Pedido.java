@@ -12,6 +12,7 @@ public class Pedido {
 
     private String id;
     private String clienteId;
+    private String descricao;
     private List<ItemPedido> itens;
     private BigDecimal valorTotal;
     private StatusPedido status;
@@ -24,11 +25,12 @@ public class Pedido {
     }
 
     // Factory method para criar novo pedido
-    public static Pedido criar(String clienteId,
+    public static Pedido criar(String clienteId, String descricao,
                                List<ItemPedido> itens) {
         var pedido = new Pedido();
         pedido.id = UUID.randomUUID().toString();
         pedido.clienteId = clienteId;
+        pedido.descricao = descricao;
         pedido.itens = new ArrayList<>(itens);
         pedido.status = StatusPedido.PENDENTE;
         pedido.dataCriacao = LocalDateTime.now();
@@ -41,6 +43,7 @@ public class Pedido {
     // Factory method para reconstruir pedido existente (ex: do banco)
     public static Pedido reconstruir(String id,
                                      String clienteId,
+                                     String descricao,
                                      List<ItemPedido> itens,
                                      BigDecimal valorTotal,
                                      StatusPedido status,
@@ -49,6 +52,7 @@ public class Pedido {
         var pedido = new Pedido();
         pedido.id = id;
         pedido.clienteId = clienteId;
+        pedido.descricao = descricao;
         pedido.itens = new ArrayList<>(itens);
         pedido.valorTotal = valorTotal;
         pedido.status = status;
@@ -100,6 +104,10 @@ public class Pedido {
 
     public String getClienteId() {
         return clienteId;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 
     public List<ItemPedido> getItens() {
